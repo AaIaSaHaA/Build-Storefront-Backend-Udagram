@@ -79,9 +79,23 @@ This section contains all the packages used in this project and how to install t
 
 ### setup
 First we download postgresql and install it in your device. After that you will open pgAdmid and create a database using it (the database will have a user and a password).
-To make things easierm you can set up environment variables and add the path in the system variables.
+To make things easier, you can set up environment variables and add the path in the system variables.
 
-### connect
+### Create user
+**Via pgAdmin**
+- Login to your pgAdmin
+- Create a user by right clicking on *Login/Group Rules*
+- Add the username and password
+- In *privileges* allow all the choices for the user
+- Press *Save*
+
+### Create database
+**Via SQL query**
+- Go to your terminal
+- Write this command connect to the pgAdmin user 'psql -U pgAdmin_username'
+- To create the database write SQL query 'CREATE DATABASE Database_Name'
+
+### connect (in case you disconnected)
 To connect to the database that we created, we use 'psql Database_Name' command in CMD. After that we will be able to use sql to build tables in the database.
 
 ### run
