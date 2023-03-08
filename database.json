@@ -1,0 +1,16 @@
+{
+    "dev": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "university",
+      "user": "dell",
+      "password": "aisha@4010058"
+    },
+    "test": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "university_test",
+      "user": "dell",
+      "password": "aisha@4010058"
+    }
+  }
