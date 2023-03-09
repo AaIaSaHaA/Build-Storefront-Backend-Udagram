@@ -79,8 +79,21 @@ This section contains all the packages used in this project and how to install t
 ## Database
 
 ### setup
-First we download postgresql and install it in your device. After that you will open pgAdmid and create a database using it (the database will have a user and a password).
-To make things easier, you can set up environment variables and add the path in the system variables.
+- First we download postgresql suitable for your device OS using this link https://www.postgresql.org/download/. After completing the download, install it in your device. During setup, it will ask you for a password for the database superuser. You have to remember this password because we will use it in the project.
+- After that you will open pgAdmid (one of postgresql services). It will ask you for a password to contiue, enter the password from the previous step.
+- Now you will launch pgAdmin interface.
+- On the top left you will be able to see your databases and users
+- Add the path in the system variables.
+- To make things easier, you can set up environment variable and add it to the system variables' path 
+- (Ex.)
+```
+In the Environment Variable:
+- User Variable
+-- Variable name: PostgreSQL
+-- Variable value: C:\Program Files\PostgreSQL\15\bin
+- System Variables:
+- Path > Edit > New > C:\Program Files\PostgreSQL\15\bin
+```
 
 ### Create user
 **Via pgAdmin**
@@ -93,16 +106,20 @@ To make things easier, you can set up environment variables and add the path in 
 ### Create database
 **Via SQL query**
 - Go to your terminal
-- Write this command connect to the pgAdmin user 'psql -U pgAdmin_username'
-- To create the database write SQL query 'CREATE DATABASE Database_Name'
+- Write this command connect to the pgAdmin user 'psql -U pgAdmin_username -d postgres'
+- This command will connect you to the user you created with the default database postgres
+- Now you can create your own database
+- To create the database write SQL query 'CREATE DATABASE Database_Name;'
+- To exit use '\q' command
 
 ### connect (in case you disconnected)
-To connect to the database that we created, we use 'psql Database_Name' command in CMD. After that we will be able to use sql to build tables in the database.
+To connect to the database that we created, we use 'psql -U pgAdmin_username -d Database_Name;' command in CMD. Enter the password for the user. After that we will be able to use sql to build tables in the database.
 
 ### run
-In this project all the commands that are used to build the database are saved in the root we go to migrations/sqls and there we will find two files for each table.
-db-migrate up which will include the commands that executes the migrations of the table and db-migrate down which will include the commands that executes the migrations that will undo some commands drom the db-migrate up.
-Running these two files, for each table, will make you able to access the database freely in the code.
+- In this project all the commands that are used to build the database are saved in the root we go to migrations/sqls and there we will find two files for each table.
+- db-migrate up which will include the commands that executes the migrations of the table and db-migrate down which will include the commands that executes the migrations that will undo some commands drom the db-migrate up.
+- Running these two files, for each table, will make you able to access the database freely in the code.
+- To run them you can use this command 'psql -U username -d database_name -f path_to_sql_file'.
 
 Note: the .env file in the root should include Postgres information that make you connect to the database.
 
