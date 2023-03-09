@@ -1,10 +1,10 @@
-import express, { Request, Response } from 'express'
-import bodyParser from 'body-parser'
-import productHandlers from './handlers/product'
-import orderHandlers from './handlers/order'
-import tuserHandlers from './handlers/tuser'
+import express, { Application, Request, Response } from 'express';
+import bodyParser from 'body-parser';
+import productHandlers from './handlers/product';
+import orderHandlers from './handlers/order';
+import tuserHandlers from './handlers/tuser';
 
-const app: express.Application = express()
+const app: Application = express()
 const port: number = 3000;
 
 app.use(bodyParser.json())

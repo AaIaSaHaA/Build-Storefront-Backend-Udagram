@@ -1,5 +1,5 @@
 import supertest from "supertest";
-import app from "./server";
+import app from "./server.js";
 import { Tuser, TuserStore } from "./models/tuser";
 import { Product } from "./models/product";
 import { Order } from "./models/order";
