@@ -8,19 +8,31 @@ const token_secret = config.TOKEN_SECRET;
 const store = new ProductStore()
 
 const index = async (_req: Request, res: Response) => {
-    const products = await store.index()
-    res.json(products)
-}
+    try {
+      const products = await store.index()
+      res.json(products)
+    }
+    catch (error) {
+      console.error(error)
+      res.status(500).send("An error occurred while fetching products")
+    }
+  }
 
 const show = async (req: Request, res: Response) => {
-    const products = await store.show(req.params.id)
-    if (products) {
+    try {
+      const products = await store.show(req.params.id)
+      if (products) {
         res.json(products)
-    }
-    else {
+      } else {
         res.status(404).json('Product is not found')
+      }
     }
-}
+    catch (error) {
+      console.error(error)
+      res.status(500).send("An error occurred while fetching the product")
+    }
+  }
+  
 
 const create = async (req: Request, res: Response) => {
     try {

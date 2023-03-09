@@ -45,6 +45,7 @@ const show = async (req: Request, res: Response) => {
         res.json(err)
     }
 }
+
 const create = async (req: Request, res: Response) => {
     try {
         const tusers: Tuser = {

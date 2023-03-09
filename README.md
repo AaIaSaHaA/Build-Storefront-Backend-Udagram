@@ -1,80 +1,99 @@
 # Storefront Backend Project
 
+
 ## Installation Instructions
 Using any Code Editor, like Visual Studio Code, open the project file. Then, open a teminal and run the following commands.
 
 This section contains all the packages used in this project and how to install them.
 ### Prettier
-1- Install prettier
-	npm i prettier
-2- Add some preferences to prettier (in bash terminal)
-	touch .prettierrc
-3- Inside prettierrc file add (example->)
+1- - Install prettier
+	- npm i prettier
+2- - Add some preferences to prettier (in bash terminal)
+	- touch .prettierrc
+3- - Inside prettierrc file add (example->)
+	- ```
 	{
   		"semi": true,
   		"singleQuote": true
     }
-4- Allow prettier to check our code, add in package.json file -> Edit “scripts”
-	"prettier": "prettier --config .prettierrc ./src/**/*.ts --write",
-5- Run prettier 
-	npm run prettier 	
+	```
+4- - Allow prettier to check our code, add in package.json file -> Edit “scripts”
+	- "prettier": "prettier --config .prettierrc ./src/**/*.ts --write",
+5- - Run prettier 
+	- npm run prettier 	
 
 ### Lodash
-1- Install lodash
-	npm i lodash
-2- Add some preferences to lodash 
-    npm i --save-dev @types/lodash
+1- - Install lodash
+	- npm i lodash
+2- - Add some preferences to lodash 
+    - npm i --save-dev @types/lodash
 
 ### Jasmine
-1- Install Jasmine
-	npm i jasmine
-2- Add a reporter for outputting Jasmine results to the terminal
-	npm i jasmine-spec-reporter
-3- Add type definitions
-	npm i --save-dev @types/jasmine
-4- Allow jasmine into our code, add in package.json file -> Edit “scripts”
-	"jasmine": "jasmine"
-	"test": "npm run build && npm run jasmine"
-5- to run jasmine
-    npm run jasmine
-    npm run test
-        OR
-    npm run test
+1- - Install Jasmine
+	- npm i jasmine
+2- - Add a reporter for outputting Jasmine results to the terminal
+	- npm i jasmine-spec-reporter
+3- - Add type definitions
+	- npm i --save-dev @types/jasmine
+4- - Allow jasmine into our code, add in package.json file -> Edit “scripts”
+	- "jasmine": "jasmine"
+	- "test": "npm run build && npm run jasmine"
+5- - to run jasmine
+    - npm run jasmine
+    - npm run test
+        - OR
+    - npm run test
 
 ### Endpoint Testing
-1- Install Supertest
-	npm i supertest
-2- Add type definition to allow the code to compile without TypeScript errors
-    npm i --save-dev @types/supertest
-3- Import SuperTest in the spec file
-4- Create and Run Tests
-    npm run test
+1- - Install Supertest
+	- npm i supertest
+2- - Add type definition to allow the code to compile without TypeScript errors
+    - npm i --save-dev @types/supertest
+3- - Import SuperTest in the spec file
+4- - Create and Run Tests
+    - npm run test
 
 ### dotenv
-1- Install dotenv
-    npm i dotenv
-2- Add type definitions
-	npm i --save-dev @types/dotenv
+1- - Install dotenv
+    - npm i dotenv
+2- - Add type definitions
+	- npm i --save-dev @types/dotenv
 
 ### pg
-1- Install pg
-    npm i pg
-2- Add type definitions
-	npm i --save-dev @types/ pg
+1- - Install pg
+    - npm i pg
+2- - Add type definitions
+	- npm i --save-dev @types/ pg
 
 ### db-migrate
-1- Install db-migrate
-    npm install -g db-migrate
-2- Install db-migrate-pg
-	npm i db-migrate-pg
-3- Create a migration (includes db-migrate up & db-migrate down)
-    db-migrate create nameofthetable-table --sql-file
+1- - Install db-migrate
+    - npm install -g db-migrate
+2- - Install db-migrate-pg
+	- npm i db-migrate-pg
+3- - Create a migration (includes db-migrate up & db-migrate down)
+    - db-migrate create nameofthetable-table --sql-file
 
 ### jsonwebtoken
-1- Install jsonwebtoken
-    npm i jsonwebtoken
-2- Add type definitions
-    npm i --save-dev @types/jsonwebtoken
+1- - Install jsonwebtoken
+    - npm i jsonwebtoken
+2- - Add type definitions
+    - npm i --save-dev @types/jsonwebtoken
+
+
+## Environment Variables
+Setup the following variables in the .env file:
+- POSTGRES_HOST       = <Database_IP_Address>
+- POSTGRES_DB         = <Database_Name>
+- POSTGRES_USERNAME   = <Database_Username>
+- POSTGRES_PASSWORD   = <Database_Password>
+- POSTGRES_TEST_DB    = <Test_Database_Name>
+- TOKEN_SECRET        = <Any_PassPhrase>
+- BCRYPT_PASSWORD     = <Bcrypt_Password_Hash>
+- SALT_ROUNDS         = <Number_Rounds_Hashing_10>
+- AWS_REGION          = <us-east-1>
+- AWS_PROFILE         = <Profile>
+- AWS_BUCKET          = <Bucket_Name>
+
 
 ## Database
 
@@ -122,6 +141,7 @@ To connect to the database that we created, we use 'psql -U pgAdmin_username -d 
 - To run them you can use this command 'psql -U username -d database_name -f path_to_sql_file'.
 
 Note: the .env file in the root should include Postgres information that make you connect to the database.
+
 
 ## Running Ports
 After start up, the server will start on port 3000 and the database on port 5432

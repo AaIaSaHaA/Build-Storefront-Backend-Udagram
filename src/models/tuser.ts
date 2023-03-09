@@ -73,15 +73,18 @@ export class TuserStore {
 
     async authenticate(username: string, password: string): Promise<Tuser | null> {
         const conn = await client.connect()
-        const sql = `SELECT u_password FROM tusers WHERE firstName=${username}`
+        const sql = `SELECT u_password FROM tusers WHERE firstName = $1`;
         const result = await conn.query(sql, [username])
-        console.log(password + pepper)
+
+        const hashedPassword = bcrypt.hashSync(password, saltRounds);
+        const hashedPasswordWithPepper = bcrypt.hashSync(hashedPassword + pepper, saltRounds);
+        console.log(hashedPasswordWithPepper)
 
         if (result.rows.length) {
             const user = result.rows[0]
             console.log(user)
 
-            if (bcrypt.compareSync(password + pepper, user.password_digest)) {
+            if (bcrypt.compareSync(hashedPasswordWithPepper, user.u_password)) {
                 return user
             }
         }

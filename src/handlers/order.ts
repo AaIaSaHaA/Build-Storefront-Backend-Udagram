@@ -8,14 +8,38 @@ const token_secret = config.TOKEN_SECRET;
 
 const store = new OrderStore()
 
-const index = async (_req: Request, res: Response) => {
-    const orders = await store.index()
-    res.json(orders)
-}
+const index = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization?.split(' ')[1]
+      if (!token) {
+        return res.status(401).send('Access denied. No token provided.')
+      }
+      jwt.verify(token, token_secret as string)
+      const orders = await store.index()
+      res.json(orders)
+    }
+    catch (error) {
+      console.error(error)
+      res.status(500).send('An error occurred while fetching orders')
+    }
+}  
+  
 const show = async (req: Request, res: Response) => {
-    const orders = await store.show(req.body.id)
-    res.json(orders)
+    try {
+      const token = req.headers.authorization?.split(' ')[1]
+      if (!token) {
+        return res.status(401).send('Access denied. No token provided.')
+      }
+      jwt.verify(token, token_secret as string)
+      const orders = await store.show(req.body.id)
+      res.json(orders)
+    }
+    catch (error) {
+      console.error(error)
+      res.status(500).send('An error occurred while fetching the order')
+    }
 }
+
 const create = async (req: Request, res: Response) => {
     const orders: Order = {
         o_id: req.body.o_id,
