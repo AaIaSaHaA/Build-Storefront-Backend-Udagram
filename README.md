@@ -90,9 +90,6 @@ Setup the following variables in the .env file:
 - TOKEN_SECRET        = <Any_PassPhrase>
 - BCRYPT_PASSWORD     = <Bcrypt_Password_Hash>
 - SALT_ROUNDS         = <Number_Rounds_Hashing_10>
-- AWS_REGION          = <us-east-1>
-- AWS_PROFILE         = <Profile>
-- AWS_BUCKET          = <Bucket_Name>
 
 
 ## Database
