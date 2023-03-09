@@ -53,7 +53,7 @@ export class TuserStore {
             return user
         }
         catch (err) {
-            throw new Error(`Could not add new tuser ${name}. Error: ${err}`)
+            throw new Error(`Could not add new tuser ${s.firstName}. Error: ${err}`)
         }
     }
 

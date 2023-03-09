@@ -50,7 +50,7 @@ export class OrderStore {
             return book
         }
         catch (err) {
-            throw new Error(`Could not add new order ${name}. Error: ${err}`)
+            throw new Error(`Could not add new order ${s.o_id}. Error: ${err}`)
         }
     }
   
