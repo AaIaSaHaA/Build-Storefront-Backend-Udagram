@@ -1,8 +1,9 @@
 # Storefront Backend Project
 
 ## Installation Instructions
-This section contains all the packages used in this project and how to install them.
+Using any Code Editor, like Visual Studio Code, open the project file. Then, open a teminal and run the following commands.
 
+This section contains all the packages used in this project and how to install them.
 ### Prettier
 1- Install prettier
 	npm i prettier

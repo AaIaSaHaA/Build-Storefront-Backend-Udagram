@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { ProductStore } from '../product';
+import { ProductStore } from '../models/product';
 
 describe('ProductsStore', () => {
     let products: ProductStore;

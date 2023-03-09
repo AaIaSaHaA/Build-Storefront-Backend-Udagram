@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { TuserStore } from '../tuser';
+import { TuserStore } from '../models/tuser';
 
 describe('TuserStore', () => {
     let tusers: TuserStore;

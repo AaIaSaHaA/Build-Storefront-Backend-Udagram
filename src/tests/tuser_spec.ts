@@ -1,4 +1,4 @@
-import { Tuser, TuserStore} from "../tuser";
+import { Tuser, TuserStore} from "../models/tuser";
 
 const store = new TuserStore()
 
