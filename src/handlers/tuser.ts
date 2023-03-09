@@ -109,7 +109,7 @@ const authenticate = async (req: Request, res: Response) => {
 const tuserHandlers = (app: express.Application) => {
     app.get('/tusers', index)
     app.get('/tusers/:id', show)
-    app.post('/tusers', authenticate, create)
+    app.post('/tusers', create)
     app.delete('/tusers', authenticate, destroy)
     app.post('/authenticate', authenticate)
 }
