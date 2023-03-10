@@ -7,21 +7,25 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Products
 - Index: 'products/' [GET]
 - Show: 'products/:id' [GET]
-- Create [token required]: 'products/' [POST] (token)
+- Create [token required]: 'products/' [POST]
 - [ADDED] Delete: 'products/:id  [DELETE]
 
 #### Users
 - Index [token required]: 'tusers/' [GET] (token)
 - Show [token required]: 'tusers/:id' [GET] (token)
-- Create N[token required]: 'tusers/' [POST] (token)
+- Create [token required]: 'tusers/' [POST] (token)
 - [ADDED] Delete [token required]: 'tusers/:id' [DELETE] (token)
+- [ADDED] Authenticate [token required]: /authenticate [POST] (token)
+
 
 #### Orders
 - [ADDED] Index [token required]: 'orders/' [GET] (token)
 - [ADDED] Show [token required]: 'orders/:id' [GET] (token)
-- [ADDED] Create N[token required]: 'orders/' [POST] (token)
+- [ADDED] Create [token required]: 'orders/' [POST] (token)
 - [ADDED] Delete [token required]: 'orders/:id' [DELETE] (token)
-- Current Order by user (args: user id)[token required]: 'orders/current/:user_id' [GET] (token)
+- Current Order by user id (args: user id) [token required]: 'orders/current/:user_id' [GET] (token)
+- [ADDED] Add Product [token required]: /tusers/:id/orders [POST]
+- [ADDED] Authenticate [token required]: /authenticate [POST] (token)
 
 ## Data Shapes
 #### Product
