@@ -104,7 +104,7 @@ const getCOBUId = async (req: Request, res: Response) => {
     }
 }
 
-const getUO = async (req: Request, res: Response) => {
+const addProduct = async (req: Request, res: Response) => {
         try {
             const o_id: number = parseInt(req.params.id);
             const p_id: number = parseInt(req.body.product.id);
@@ -123,8 +123,8 @@ const orderHandlers = (app: express.Application) => {
     app.get('/orders/:id', show)
     app.post('/orders', authenticate, create)
     app.delete('/orders', destroy)
-    app.get('//tusers/:id/orders', authenticate, getCOBUId)
-    app.post('/tusers/:id/orders', authenticate, getUO)
+    app.get('/tusers/:id/orders', authenticate, getCOBUId)
+    app.post('/tusers/:id/orders', authenticate, addProduct)
     app.post('/authenticate', authenticate)
 };
 

@@ -50,15 +50,15 @@ const create = async (req: Request, res: Response) => {
     try {
         const tusers: Tuser = {
             u_id: req.body.u_id,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
             u_password: req.body.u_password,
         }
         const newTuser = await store.create(tusers)
         const token = jwt.sign({
             u_id: newTuser.u_id,
-            firstName: newTuser.firstName,
-            lastName: newTuser.lastName,
+            firstname: newTuser.firstname,
+            lastname: newTuser.lastname,
             u_password: newTuser.u_password,
         }, token_secret as string);
         res.json(token)
@@ -91,13 +91,13 @@ const destroy = async (req: Request, res: Response) => {
 const authenticate = async (req: Request, res: Response) => {
     try {    
         const tuser = (await store.authenticate(
-            req.body.firstName,
+            req.body.firstname,
             req.body.u_password,
         )) as Tuser;
         const token = jwt.sign({
             u_id: req.body.u_id,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
         }, token_secret as string);
         res.json(token)
     }

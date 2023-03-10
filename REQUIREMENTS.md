@@ -33,11 +33,11 @@ Table: products (p_id:serial[primary key], p_name:varchar(15), price:integer)
 
 #### User
 - id
-- firstName
-- lastName
+- firstname
+- lastname
 - password
 
-Table: tusers (u_id:serial[primary key], firstName:varchar(15), lastName:varchar(15), u_password:varchar)
+Table: tusers (u_id:serial[primary key], firstname:varchar(15), lastname:varchar(15), u_password:varchar)
 
 #### Orders
 - id

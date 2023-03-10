@@ -6,9 +6,9 @@ const pepper = config.BCRYPT_PASSWORD;
 const saltRounds = config.SALT_ROUNDS;
 
 export type Tuser = {
-    u_id: number;
-    firstName: string;
-    lastName: string;
+    u_id?: number;
+    firstname: string;
+    lastname: string;
     u_password: string;
 }
 
@@ -41,19 +41,19 @@ export class TuserStore {
   
     async create(s: Tuser): Promise<Tuser> { //Create new row in the Database
         try {
-            const sql = 'INSERT INTO tusers (firstName, lastName, u_password) VALUES($1, $2, $3) RETURNING *'
+            const sql = 'INSERT INTO tusers (firstname, lastname, u_password) VALUES($1, $2, $3) RETURNING *'
             const conn = await client.connect()
             const hash = bcrypt.hashSync(
                 s.u_password + pepper,
                 parseInt(saltRounds as string) 
             );            
-            const result = await conn.query(sql, [s.firstName, s.lastName, hash])
+            const result = await conn.query(sql, [s.firstname, s.lastname, hash])
             const user = result.rows[0]
             conn.release()
             return user
         }
         catch (err) {
-            throw new Error(`Could not add new tuser ${s.firstName}. Error: ${err}`)
+            throw new Error(`Could not add new tuser ${s.firstname}. Error: ${err}`)
         }
     }
 
@@ -73,18 +73,18 @@ export class TuserStore {
 
     async authenticate(username: string, password: string): Promise<Tuser | null> {
         const conn = await client.connect()
-        const sql = `SELECT u_password FROM tusers WHERE firstName = $1`;
+        const sql = `SELECT u_password FROM tusers WHERE firstname = $1`;
         const result = await conn.query(sql, [username])
 
-        const hashedPassword = bcrypt.hashSync(password, saltRounds);
-        const hashedPasswordWithPepper = bcrypt.hashSync(hashedPassword + pepper, saltRounds);
-        console.log(hashedPasswordWithPepper)
+        // const hashedPassword = bcrypt.hashSync(password, saltRounds);
+        // const hashedPasswordWithPepper = bcrypt.hashSync(hashedPassword + pepper, saltRounds);
+        // console.log(hashedPasswordWithPepper)
 
         if (result.rows.length) {
             const user = result.rows[0]
             console.log(user)
 
-            if (bcrypt.compareSync(hashedPasswordWithPepper, user.u_password)) {
+            if (bcrypt.compareSync(password+pepper, user.u_password)) {
                 return user
             }
         }

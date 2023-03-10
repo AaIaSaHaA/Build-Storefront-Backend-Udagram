@@ -30,9 +30,9 @@ const getUserByID = async (req: Request, res: Response): Promise<void> => {
 };
 
 const createUser = async (req: Request, res: Response): Promise<void> => {
-    const {u_id, firstName, lastName, u_password } = req.body;
+    const {u_id, firstname, lastname, u_password } = req.body;
     try {
-        const newTuser = await tuserStore.create({u_id, firstName, lastName, u_password});
+        const newTuser = await tuserStore.create({u_id, firstname, lastname, u_password});
         res.json(newTuser);
     } catch (err) {
         console.log(err);

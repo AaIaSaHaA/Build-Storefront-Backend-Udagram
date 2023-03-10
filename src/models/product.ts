@@ -1,7 +1,7 @@
 import client from "../database";
 
 export type Product = {
-    p_id: number;
+    p_id?: number;
     p_name: string;
     price: number;
 }
@@ -49,7 +49,7 @@ export class ProductStore {
 
     async delete(id: string): Promise<Product> { //Delete a row from the Database
         try {
-            const sql = 'DELETE FROM products WHERE p_id=($1)'
+            const sql = 'DELETE FROM products WHERE p_id=($1) RETURNING *'
             const conn = await client.connect()
             const result = await conn.query(sql, [id])
             const product = result.rows[0]

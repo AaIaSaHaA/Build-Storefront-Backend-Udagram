@@ -1,5 +1,3 @@
-/* Replace with your SQL commands */
-
 CREATE TABLE order_products (
 order_id INTEGER,
 product_id INTEGER,

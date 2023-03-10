@@ -32,8 +32,8 @@ describe('TuserStore', () => {
         it('should create a new tuser', async () => {
             const res = await request(tusers.create({
                 u_id: 1,
-                firstName: 'Roqia',
-                lastName: 'Ahmad',
+                firstname: 'Roqia',
+                lastname: 'Ahmad',
                 u_password: 'password'
             })).post('/tusers');
             expect(res.status).toEqual(201);
